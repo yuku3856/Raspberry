@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -7,16 +7,27 @@
 </head>
 <body>
 	<h1>アカウント一覧</h1>
+	
+	<div>
+		<p>年: <input type="text" th:value="${accountSearchInfo.age}"></p>
+		<p>性別: <input th:each="e : ${accountSearchInfo.sex}" type="radio" name="sex" th:value="${e}" th:text="${e}"></p>
+		<p>言語: <input th:each="e : ${accountSearchInfo.language}" type="checkbox" name="language" th:value="${e}" th:text="${e}"></p>
+		<select>
+			<option th:each="e : ${accountSearchInfo.employmentType}" th:value="${e}" th:text="${e}"></option>
+		</select>
+		<p><input type="submit" value="検索"></p>
+	</div>
+	
 	<table class="table table-striped">
 		<tr>
-			<th>パスワード</th>
+			<th>ID</th>
 			<th>アカウント名</th>
 			<th>社名</th>
 		</tr>
-		<tr>
-			<td>0001</td>
-			<td>yukumoto</td>
-			<td>BITZ</td>
+		<tr th:each="e : ${accountInfoList}">
+			<td th:text="${e.id}"></td>
+			<td th:text="${e.accountName}"></td>
+			<td th:text="${e.company}"></td>
 		</tr>
 	</table>
 
