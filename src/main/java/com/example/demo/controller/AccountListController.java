@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.AccountInfo;
 import com.example.demo.domain.AccountSearchInfo;
@@ -50,5 +52,13 @@ public class AccountListController {
 		}
 		
 		return "account/accountlist";
+	}
+	
+	@PostMapping("/accountlist/search")
+	public String accountSearch(Model model, @RequestParam("age") String age, @RequestParam("sex") String sex,
+			@RequestParam("language") String language,@RequestParam("employmentType") String employmentType) {
+		
+		
+		return "a";
 	}
 }

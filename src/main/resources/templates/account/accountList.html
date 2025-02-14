@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script th:src="@{/js/accountList.js}"></script>
 <title>Sample</title>
 </head>
 <body>
 	<h1>アカウント一覧</h1>
 	
 	<div>
-		<p>年: <input type="text" th:value="${accountSearchInfo.age}"></p>
+		<p>年: <input type="text" name="age" th:value="${accountSearchInfo.age}"></p>
 		<p>性別: <input th:each="e : ${accountSearchInfo.sex}" type="radio" name="sex" th:value="${e}" th:text="${e}"></p>
 		<p>言語: <input th:each="e : ${accountSearchInfo.language}" type="checkbox" name="language" th:value="${e}" th:text="${e}"></p>
-		<select>
+		<select name="employmentType">
 			<option th:each="e : ${accountSearchInfo.employmentType}" th:value="${e}" th:text="${e}"></option>
 		</select>
-		<p><input type="submit" value="検索"></p>
+		<button id="searchAccount" value="検索">検索</button>
 	</div>
 	
 	<table class="table table-striped">
