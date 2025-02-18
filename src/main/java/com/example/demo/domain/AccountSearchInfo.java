@@ -1,16 +1,16 @@
 package com.example.demo.domain;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class AccountSearchInfo {
 	
 	private String age;
 	
-	private ArrayList<String> sex;
+	private Map<Integer, String> sex;
 	
-	private ArrayList<String> language;
+	private Map<Integer, String> language;
 	
-	private ArrayList<String> EmploymentType;
+	private Map<Integer, String> EmploymentType;
 
 
 	public String getAge() {
@@ -21,27 +21,27 @@ public class AccountSearchInfo {
 		this.age = age;
 	}
 
-	public ArrayList<String> getSex() {
+	public Map<Integer, String> getSex() {
 		return sex;
 	}
 
-	public void setSex(ArrayList<String> sex) {
+	public void setSex(Map<Integer, String> sex) {
 		this.sex = sex;
 	}
 
-	public ArrayList<String> getLanguage() {
+	public Map<Integer, String> getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(ArrayList<String> language) {
+	public void setLanguage(Map<Integer, String> language) {
 		this.language = language;
 	}
 
-	public ArrayList<String> getEmploymentType() {
+	public Map<Integer, String> getEmploymentType() {
 		return EmploymentType;
 	}
 
-	public void setEmploymentType(ArrayList<String> employmentType) {
+	public void setEmploymentType(Map<Integer, String> employmentType) {
 		EmploymentType = employmentType;
 	}
 

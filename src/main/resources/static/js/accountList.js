@@ -23,5 +23,18 @@ function searchAccount () {
 		body: fd,
 	})
 	    .then(response => response.json())
-	    .then(data => console.log(data));
+	    .then(data => createTable(data));
+}
+
+function createTable (data) {
+	let tbody = $('#dataTable');
+	
+	data.forEach(function(item) {
+		let row = '<tr>' +
+		'<td>' + item.id + '</td>' +
+		'<td>' + item.accountName + '</td>' +
+		'<td>' + item.company + '</td>' +
+		'</tr>';
+		tbody.append(row);
+	});
 }

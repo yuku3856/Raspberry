@@ -11,11 +11,11 @@
 	<h1>アカウント一覧</h1>
 	
 	<div>
-		<p>年: <input type="text" name="age" th:value="${accountSearchInfo.age}"></p>
-		<p>性別: <input th:each="e : ${accountSearchInfo.sex}" type="radio" name="sex" th:value="${e}" th:text="${e}"></p>
-		<p>言語: <input th:each="e : ${accountSearchInfo.language}" type="checkbox" name="language" th:value="${e}" th:text="${e}"></p>
+		<p>年: <input type="text" name="age" th:value="${age}"></p>
+		<p>性別: <input th:each="e : ${sex}" type="radio" name="sex" th:value="${e.key}" th:text="${e.value}"></p>
+		<p>言語: <input th:each="e : ${language}" type="checkbox" name="language" th:value="${e.key}" th:text="${e.value}"></p>
 		<select name="employmentType">
-			<option th:each="e : ${accountSearchInfo.employmentType}" th:value="${e}" th:text="${e}"></option>
+			<option th:each="e : ${employmentType}" th:value="${e.key}" th:text="${e.value}"></option>
 		</select>
 		<button id="searchAccount" value="検索">検索</button>
 	</div>
@@ -26,11 +26,9 @@
 			<th>アカウント名</th>
 			<th>社名</th>
 		</tr>
-		<tr th:each="e : ${accountInfoList}">
-			<td th:text="${e.id}"></td>
-			<td th:text="${e.accountName}"></td>
-			<td th:text="${e.company}"></td>
-		</tr>
+		<tbody id="dataTable">
+			
+		</tbody>
 	</table>
 
 </body>
