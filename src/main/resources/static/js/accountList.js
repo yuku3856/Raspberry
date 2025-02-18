@@ -18,23 +18,30 @@ function searchAccount () {
 	fd.append('language', inputLanguage);
 	fd.append('employmentType', inputEmploymentType);
 	
-	fetch('http://localhost:8080/accountlist/search', {
-		method: 'POST',
-		body: fd,
+	let param = {};
+	param['age'] = inputAge;
+	$.ajax({
+		url: 'http://localhost:8080/accountlist/search',
+	    type: 'POST',
+	    dataType: 'json',
+	    data: param,
+	    timeout: 5000,
 	})
-	    .then(response => response.json())
-	    .then(data => createTable(data));
-}
-
-function createTable (data) {
-	let tbody = $('#dataTable');
-	
-	data.forEach(function(item) {
-		let row = '<tr>' +
-		'<td>' + item.id + '</td>' +
-		'<td>' + item.accountName + '</td>' +
-		'<td>' + item.company + '</td>' +
-		'</tr>';
-		tbody.append(row);
+	.done(function(data) {
+	      // 通信成功時の処理を記述
+		let tbody = $('#dataTable');
+		  	
+		data.forEach(function(item) {
+		  	let row = '<tr>' +
+		  	'<td>' + item.id + '</td>' +
+			'<td>' + item.accountName + '</td>' +
+	  		'<td>' + item.company + '</td>' +
+			'</tr>';
+	  		tbody.append(row);
+	  	});
+	})
+	.fail(function() {
+		  // 通信失敗時の処理を記述
 	});
 }
+

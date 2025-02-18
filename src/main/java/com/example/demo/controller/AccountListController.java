@@ -2,11 +2,12 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.AccountInfo;
@@ -15,6 +16,11 @@ import com.example.demo.service.AccountSearchService;
 
 @Controller
 public class AccountListController {
+	
+	@ModelAttribute
+	private AccountSearchInfo init() {
+		return new AccountSearchInfo();
+	}
 	
 	@GetMapping("/accountlist")
 	public String accountSearchInfoList(Model model) {
@@ -30,9 +36,8 @@ public class AccountListController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/accountlist/search")
-	public ArrayList<AccountInfo> accountSearch(Model model, @RequestParam("age") String age, @RequestParam("sex") String sex,
-			@RequestParam("language") String language,@RequestParam("employmentType") String employmentType) {
+	@PostMapping(value = "/accountlist/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ArrayList<AccountInfo> accountSearch(AccountSearchInfo accountSearchInfo) {
 		AccountSearchService accountSearchService = new AccountSearchService();
 		ArrayList<AccountInfo> accountInfoList = accountSearchService.search(null);
 		
