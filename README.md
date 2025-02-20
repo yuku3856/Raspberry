@@ -3,7 +3,8 @@ Springのバージョン　3.4.2
 Java17
 HTML5
 CSS
-jQuery
+jQuery3.7.1
+
 
 ライブラリ
 bootstrap@5.3.0
