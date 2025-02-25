@@ -22,7 +22,7 @@ public class AccountListController {
 		return new AccountSearchInfo();
 	}
 	
-	@GetMapping("/accountlist")
+	@GetMapping("/accountList")
 	public String accountSearchInfoList(Model model) {
 		AccountSearchService accountSearchService = new AccountSearchService();
 		AccountSearchInfo account = new AccountSearchInfo();
@@ -32,11 +32,11 @@ public class AccountListController {
 		model.addAttribute("language", account.getLanguage());
 		model.addAttribute("employmentType", account.getEmploymentType());
 		
-		return "account/accountlist";
+		return "account/accountList";
 	}
 	
 	@ResponseBody
-	@PostMapping(value = "/accountlist/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/accountList/search", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ArrayList<AccountInfo> accountSearch(AccountSearchInfo accountSearchInfo) {
 		AccountSearchService accountSearchService = new AccountSearchService();
 		ArrayList<AccountInfo> accountInfoList = accountSearchService.search(null);
