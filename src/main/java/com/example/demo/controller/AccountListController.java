@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.AccountInfo;
 import com.example.demo.domain.AccountSearchInfo;
+import com.example.demo.mapper.AccountInfoMapper;
 import com.example.demo.service.AccountSearchService;
 
 @Controller
 public class AccountListController {
+	@Autowired
+	public AccountInfoMapper mapper;
 	
 	@ModelAttribute
 	private AccountSearchInfo init() {
@@ -31,6 +35,8 @@ public class AccountListController {
 		model.addAttribute("sex", account.getSex());
 		model.addAttribute("language", account.getLanguage());
 		model.addAttribute("employmentType", account.getEmploymentType());
+		
+		AccountInfo ab = mapper.selectByName("yuku");
 		
 		return "account/accountList";
 	}

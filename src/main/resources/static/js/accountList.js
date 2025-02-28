@@ -9,7 +9,7 @@ function searchAccount () {
 	const fd = new FormData();
 	const inputAge = $('input[name=age]').val();
 	const inputSex = $('input[name=sex]:checked').val();
-	var inputLanguage =　$('input[name=language]:checked').map(function(){
+	var inputLanguage = $('input[name=language]:checked').map(function(){
 		return $(this).val();
 	}).get();
 	const inputEmploymentType = $('[name=employmentType] option:selected').val();
@@ -20,8 +20,11 @@ function searchAccount () {
 	
 	let param = {};
 	param['age'] = inputAge;
+	//param['sex'] = inputSex;
+	//param['language'] = inputLanguage;
+	//param['employmentType'] = inputEmploymentType;
 	$.ajax({
-		url: 'http://localhost:8080/accountlist/search',
+		url: 'http://localhost:8080/accountList/search',
 	    type: 'POST',
 	    dataType: 'json',
 	    data: param,
