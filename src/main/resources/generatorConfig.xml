@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="context1" targetRuntime="MyBatis3">
+		<jdbcConnection connectionURL="jdbc:postgresql://localhost:5432/account_db"
+			driverClass="org.postgresql.Driver"
+			password="Monokuro3856" userId="postgres" />
+		<javaModelGenerator targetPackage="com.example.demo.mybatis.model" targetProject="src/main/java" />
+		<sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources" />
+		<javaClientGenerator targetPackage="com.example.demo.mybatis.mappers" targetProject="src/main/java" type="XMLMAPPER" />
+		<table schema="account" tableName="account_info"></table>
+	</context>
+</generatorConfiguration>

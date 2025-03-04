@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.AccountInfo;
 import com.example.demo.domain.AccountSearchInfo;
-import com.example.demo.mapper.AccountInfoMapper;
+import com.example.demo.mybatis.mappers.AccountInfoMapper;
 import com.example.demo.service.AccountSearchService;
 
 @Controller
@@ -36,7 +36,8 @@ public class AccountListController {
 		model.addAttribute("language", account.getLanguage());
 		model.addAttribute("employmentType", account.getEmploymentType());
 		
-		AccountInfo ab = mapper.selectByName("yuku");
+		com.example.demo.mybatis.model.AccountInfo ab = new com.example.demo.mybatis.model.AccountInfo();
+		ab = mapper.selectByPrimaryKey(1);
 		
 		return "account/accountList";
 	}
