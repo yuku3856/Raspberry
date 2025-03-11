@@ -19,7 +19,7 @@ import com.example.demo.service.AccountSearchService;
 @Controller
 public class AccountListController {
 	@Autowired
-	public AccountInfoMapper mapper;
+	AccountInfoMapper mapper;
 	
 	@ModelAttribute
 	private AccountSearchInfo init() {
